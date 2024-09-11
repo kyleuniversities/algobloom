@@ -1,0 +1,58 @@
+# Digit Canceling Fractions>>
+
+This is from Hackerrank's Euler Project #33, a problem that I solved in 2017 / 2018.
+
+## Problem Description
+
+Let N and K be two integers.  Let 2 <= N <= 4 and 1 <= K <= N - 1.
+Return all the proper positive integer fractions with the following conditions:
+N is the number of digits in the numerator and denominator.
+K is the number of digits to be canceled in the numerator and denominator.
+The 0's cannot be canceled
+
+.
+
+.
+
+## Brainstorm
+
+I solved this back in 2017 / 2018 using Java classes.  But I will rethink the algorithm again.
+
+
+**Brute Force**
+
+1) Worst case.  Look through all numbers 1000 - 9999 and the 4-digit fractions that can be made from them.  Remember that proper positive fractions are 2-item-combinations, so we must square the possibilities
+
+- Time: O(10^N^2) ~ 50,000,000
+
+2) For each fraction:
+
+2A) Check the fraction has at least K digits to cancel
+
+- Time O(1)
+
+2B) Check all the cancelations and check for equality
+
+- Time O(K^2) ~ 6
+
+.
+
+Overall the time is 10^N * K^2 ~ 300,000,000 multiplied by operational costs would be very computationally expensive.
+
+
+
+**Optimized**
+
+1) Look through all the numbers 1000-9999
+
+- Time: O(10^N) ~ 10000
+
+2) Review their cancelations
+
+- Time: O(K^2) ~ 6
+
+3) Record the cancelation signature (digits canceled + ratio between the canceled and original)
+
+4) If any group of numbers have the same cancelation signature, then all 2-item-combinations of those numbers are the proper fractions.
+
+
