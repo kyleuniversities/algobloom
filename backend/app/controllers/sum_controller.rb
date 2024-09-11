@@ -1,5 +1,5 @@
 class SumController < ApplicationController
-    # Two Sum
+    # Two Sum - Leet Code #1
     def two_sum
         indices = []
         sum = params[:sum]
